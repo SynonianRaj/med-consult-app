@@ -1,0 +1,49 @@
+
+body {
+    background-color: #e6f6e6;
+    /* Light Blue */
+}
+
+
+.navbar {
+    background-color: #002b5b;
+    /* Dark Blue */
+}
+
+.navbar a {
+    color: white;
+    /* White */
+}
+
+.btn-primary {
+    background-color: #28b463;
+    /* Green */
+}
+
+footer {
+    background-color: #002b5b;
+    /* Dark Blue */
+    color: white;
+    /* White */
+}
+
+/* Styles for tiles */ 
+.tile {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.tile:hover {
+    transform: scale(1.05);
+}
+.selected {
+    border: 2px solid green;
+    position: relative;
+}
+.selected::after {
+    content: '✔';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 2rem;
+    color: green;
+}

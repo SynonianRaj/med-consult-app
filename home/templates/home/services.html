@@ -1,0 +1,41 @@
+{% extends "./base.html" %}
+
+{% load static %}
+{% block content %} 
+
+        <div class="row">
+            {% for val in specialization %}
+            <div class="col-md-4 tile" data-name={{val.name}} data-id={{val.specialization_id}}>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">{{val.name}}</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <button class="btn-primary btn" id="find-doctors-btn" disabled>Find Doctors</button>
+            {% endblock content %}
+   
+    {% block script %}
+    <script>
+        const tiles = document.querySelectorAll('.tile');
+        const findDoctorsBtn = document.getElementById('find-doctors-btn');
+
+        tiles.forEach(tile => {
+            tile.addEventListener('click', () => {
+                tiles.forEach(otherTile => {
+                    otherTile.classList.remove('selected');
+                });
+                tile.classList.add('selected');
+                findDoctorsBtn.disabled = false; // Enable button when tile is selected
+                findDoctorsBtn.href = `/doctor-list/${tile.dataset.id}`; // Set href based on selected tile data
+                console.log(findDoctorsBtn.href)
+            });
+        });
+        findDoctorsBtn.addEventListener('click', () => {
+            window.location.href = findDoctorsBtn.href;
+        });
+    </script>
+
+    {% endblock script %}
+
